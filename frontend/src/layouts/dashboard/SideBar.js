@@ -196,6 +196,7 @@ const SideBar = () => {
                     key={index}
                     onClick={() => {
                       handleClick();
+                      setSelected(-1);
                     }}
                   >
                     <Stack

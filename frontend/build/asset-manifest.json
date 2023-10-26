@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/static/js/main.de6f5e65.js",
+    "main.js": "/static/js/main.0a77a732.js",
     "static/js/870.919a955b.chunk.js": "/static/js/870.919a955b.chunk.js",
     "static/js/184.bbf313c7.chunk.js": "/static/js/184.bbf313c7.chunk.js",
     "static/js/600.8531df5a.chunk.js": "/static/js/600.8531df5a.chunk.js",
     "static/js/240.79ba9867.chunk.js": "/static/js/240.79ba9867.chunk.js",
     "static/js/810.1893c0ef.chunk.js": "/static/js/810.1893c0ef.chunk.js",
-    "static/js/21.bc987d85.chunk.js": "/static/js/21.bc987d85.chunk.js",
+    "static/js/21.e32c99b7.chunk.js": "/static/js/21.e32c99b7.chunk.js",
     "static/js/796.dc43cce1.chunk.js": "/static/js/796.dc43cce1.chunk.js",
     "static/js/563.5e7d513c.chunk.js": "/static/js/563.5e7d513c.chunk.js",
     "static/js/34.fe2b7676.chunk.js": "/static/js/34.fe2b7676.chunk.js",
@@ -22,13 +22,13 @@
     "static/js/89.2081e266.chunk.js": "/static/js/89.2081e266.chunk.js",
     "static/media/Logo.svg": "/static/media/Logo.2c56878f22a121df326b6288bd984b31.svg",
     "index.html": "/index.html",
-    "main.de6f5e65.js.map": "/static/js/main.de6f5e65.js.map",
+    "main.0a77a732.js.map": "/static/js/main.0a77a732.js.map",
     "870.919a955b.chunk.js.map": "/static/js/870.919a955b.chunk.js.map",
     "184.bbf313c7.chunk.js.map": "/static/js/184.bbf313c7.chunk.js.map",
     "600.8531df5a.chunk.js.map": "/static/js/600.8531df5a.chunk.js.map",
     "240.79ba9867.chunk.js.map": "/static/js/240.79ba9867.chunk.js.map",
     "810.1893c0ef.chunk.js.map": "/static/js/810.1893c0ef.chunk.js.map",
-    "21.bc987d85.chunk.js.map": "/static/js/21.bc987d85.chunk.js.map",
+    "21.e32c99b7.chunk.js.map": "/static/js/21.e32c99b7.chunk.js.map",
     "796.dc43cce1.chunk.js.map": "/static/js/796.dc43cce1.chunk.js.map",
     "563.5e7d513c.chunk.js.map": "/static/js/563.5e7d513c.chunk.js.map",
     "34.fe2b7676.chunk.js.map": "/static/js/34.fe2b7676.chunk.js.map",
@@ -44,6 +44,6 @@
     "89.2081e266.chunk.js.map": "/static/js/89.2081e266.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.de6f5e65.js"
+    "static/js/main.0a77a732.js"
   ]
 }
