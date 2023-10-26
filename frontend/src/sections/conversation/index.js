@@ -1,7 +1,6 @@
 // React
 import { useRef } from "react";
 import { Stack } from "@mui/material";
-import { useTheme } from "@emotion/react";
 import Footer from "./Footer";
 import Header from "./Header";
 import Message from "./Message";

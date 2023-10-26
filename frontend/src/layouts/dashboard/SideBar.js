@@ -19,7 +19,7 @@ import { Nav_Buttons, Nav_Setting, Profile_Menu } from "../../data";
 import { useNavigate } from "react-router-dom";
 
 // Redux
-import { logout } from "../../store";
+import { logout, logoutChat, logoutUser } from "../../store";
 
 // React-Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -200,8 +200,11 @@ const SideBar = () => {
                   >
                     <Stack
                       onClick={() => {
-                        if (index === 2) dispatch(logout());
-                        else navigate(path);
+                        if (index === 2) {
+                          dispatch(logoutChat());
+                          dispatch(logoutUser());
+                          dispatch(logout());
+                        } else navigate(path);
                       }}
                       sx={{ width: 100 }}
                       direction="row"

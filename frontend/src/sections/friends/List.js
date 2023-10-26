@@ -11,7 +11,7 @@ const List = ({ thunk, list, type }) => {
     dispatch(thunk());
   }, [dispatch, thunk]);
 
-  console.log(list);
+  // console.log(list);
 
   return (
     <>

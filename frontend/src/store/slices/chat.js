@@ -125,6 +125,14 @@ const chatSlice = createSlice({
     addSingleChatMessage(state, action) {
       state.singleChat.currentMessages.push(action.payload);
     },
+
+    logoutChat(state, action) {
+      state.singleChat.conversations = [];
+      state.singleChat.currentConversation = null;
+      state.singleChat.currentMessages = [];
+      state.singleChat.error = null;
+      state.singleChat.isLoading = false;
+    },
   },
 });
 
@@ -136,4 +144,5 @@ export const {
   setSingleChatCurrentConversations,
   fetchSingleChatCurrentMessages,
   addSingleChatMessage,
+  logoutChat,
 } = chatSlice.actions;

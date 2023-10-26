@@ -19,7 +19,7 @@ import {
 import { logout } from "./slices/auth";
 
 // userSlice
-import { selectConversation, setUser, setUserAvatar } from "./slices/user";
+import { selectConversation, setUser, logoutUser } from "./slices/user";
 
 // chatSlice
 import {
@@ -29,6 +29,7 @@ import {
   setSingleChatCurrentConversations,
   fetchSingleChatCurrentMessages,
   addSingleChatMessage,
+  logoutChat,
 } from "./slices/chat";
 
 // callSlice
@@ -61,7 +62,7 @@ export {
   // User
   selectConversation,
   setUser,
-  setUserAvatar,
+  logoutUser,
   // Chat
   fetchSingleChatConversations,
   updateSingleChatConversations,
@@ -69,6 +70,7 @@ export {
   setSingleChatCurrentConversations,
   fetchSingleChatCurrentMessages,
   addSingleChatMessage,
+  logoutChat,
   // Call
   setVoiceCall,
   setVideoCall,

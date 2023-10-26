@@ -13,7 +13,6 @@ const initialState = {
   friends: [],
   friendRequests: [],
   chatType: null,
-  // TODO: Calllogs
   callLogs: [],
   roomId: null,
   isLoading: false,
@@ -31,6 +30,17 @@ const userSlice = createSlice({
     setUser(state, action) {
       state.user = action.payload;
     },
+    logoutUser(state, action) {
+      state.user = null;
+      state.users = [];
+      state.friends = [];
+      state.friendRequests = [];
+      state.chatType = null;
+      state.callLogs = [];
+      state.roomId = null;
+      state.isLoading = false;
+      state.error = null;
+    },
   },
   extraReducers(builder) {
     // fetchUsers
@@ -41,6 +51,8 @@ const userSlice = createSlice({
       state.isLoading = false;
       state.isLoggedIn = true;
       state.users = action.payload.data;
+
+      console.log("fetch USers done");
     });
     builder.addCase(fetchUsers.rejected, (state, action) => {
       state.isLoading = false;
@@ -111,4 +123,4 @@ const userSlice = createSlice({
 
 export default userSlice.reducer;
 
-export const { selectConversation, setUser, setUserAvatar } = userSlice.actions;
+export const { selectConversation, setUser, logoutUser } = userSlice.actions;

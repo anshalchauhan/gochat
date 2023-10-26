@@ -70,8 +70,8 @@ const ChatElement = ({
           <Stack spacing={0.3}>
             <Typography variant="subtitle2">{name}</Typography>
             <Typography variant="caption">
-              {lastMessage.length > 24
-                ? `${lastMessage.slice(0, 24)}...`
+              {lastMessage?.length > 24
+                ? `${lastMessage?.slice(0, 24)}...`
                 : lastMessage}
             </Typography>
           </Stack>

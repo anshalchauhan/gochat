@@ -26,7 +26,6 @@ import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
 import { useSelector } from "react-redux";
 import { socket } from "../../socket";
-import ChatElementDisplay from "../../components/ChatElementDisplay";
 
 //Actions Data
 const Actions = [

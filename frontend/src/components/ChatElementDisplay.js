@@ -19,18 +19,15 @@ const userId = window.localStorage.getItem("userId");
 const ChatElementDisplay = ({ type }) => {
   // React-Redux
   const dispatch = useDispatch();
-  const { conversations } = useSelector((state) => state.chat.singleChat);
+  const { conversations, currentMessages } = useSelector(
+    (state) => state.chat.singleChat
+  );
 
   useEffect(() => {
     socket.emit("get_single_chat_conversations", { userId }, (data) => {
-      // data => exisitingConversations
-      // console.log(data);
-
       dispatch(fetchSingleChatConversations({ conversations: data }));
     });
-  }, [dispatch]);
-
-  // through type we will choose contact data or group data, will implement this feature later
+  }, [dispatch,currentMessages]);
 
   return (
     <>

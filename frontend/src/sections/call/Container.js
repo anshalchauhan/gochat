@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 
 // MUI
-import { Box, IconButton, Stack, Typography } from "@mui/material";
+import { IconButton, Stack, Typography } from "@mui/material";
 
 // Phosphor Icons
 import { PhoneSlash } from "phosphor-react";
@@ -78,16 +78,15 @@ const Container = ({ data }) => {
           if (updateType === "ADD") {
             // rmVideo is remoteVideo
             const rmVideo = document.getElementById("remote-video");
+
             const vd = document.createElement(
               data?.callType === "video" ? "video" : "audio"
             );
-            vd.id = streamList[0].streamID;
+            vd.id = "video-remote-zego";
             vd.autoplay = true;
             vd.playsInline = true;
             vd.muted = false;
-            if (rmVideo) {
-              rmVideo?.appendChild(vd);
-            }
+            rmVideo?.appendChild(vd);
 
             zg.startPlayingStream(streamList[0].streamID, {
               audio: true,
@@ -95,18 +94,8 @@ const Container = ({ data }) => {
             }).then((stream) => {
               if (vd) vd.srcObject = stream;
             });
-          } else if (
-            updateType === "DELETE" &&
-            zg &&
-            localStream &&
-            streamList[0].streamID
-          ) {
-            zg.destroyStream(localStream);
-            zg.stopPublishingStream(streamList[0].streamID);
-            zg.logoutRoom(data?.roomId.toString());
-            zgVar.destroyEngine();
-            setZgVar(undefined);
-            dispatch(endCall());
+          } else if (updateType === "DELETE") {
+            zg.stopPlayingStream(streamList[0].streamID);
           }
         }
       );
@@ -132,6 +121,7 @@ const Container = ({ data }) => {
       localVideo?.appendChild(videoElement);
       const td = document.getElementById("video-local-zego");
       if (td) td.srcObject = localStream;
+
       let streamID = new Date().getTime().toString();
       setPublishStream(streamID);
       setLocalStream(localStream);
@@ -158,8 +148,8 @@ const Container = ({ data }) => {
   // closeCall function
   const closeCall = () => {
     if (zgVar && localStream && publishStream) {
-      zgVar.destroyStream(localStream);
       zgVar.stopPublishingStream(publishStream);
+      zgVar.destroyStream(localStream);
       zgVar.logoutRoom(data?.roomId.toString());
       zgVar.destroyEngine();
       setZgVar(undefined);
@@ -173,6 +163,7 @@ const Container = ({ data }) => {
         from: data?.userId,
       });
     }
+
     dispatch(endCall());
   };
 
@@ -201,21 +192,20 @@ const Container = ({ data }) => {
                 alt={`${data?.name}'s profile`}
                 height={300}
                 width={300}
-                // style={{ marginBottom: "48px" }}
               />
             )}
           </Stack>
           {callAccepted && (
-            <Box sx={{ position: "relative" }} id="remote-video">
-              <Box
-                sx={{
+            <div style={{ position: "relative" }} id="remote-video">
+              <div
+                style={{
                   position: "absolute",
                   top: 0,
                   left: 0,
                 }}
                 id="local-video"
-              ></Box>
-            </Box>
+              ></div>
+            </div>
           )}
           <IconButton
             style={{ width: 64, height: 64, padding: 0, marginTop: 48 }}

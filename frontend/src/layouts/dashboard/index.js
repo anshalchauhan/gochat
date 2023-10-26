@@ -15,7 +15,7 @@ import {
   selectConversation,
   addSingleChatMessage,
   setSingleChatCurrentConversations,
-  // pushToAudioCallQueue,
+  fetchSingleChatConversations,
   setIncomingVoiceCall,
   setIncomingVideoCall,
   endCall,
@@ -36,9 +36,7 @@ const DashboardLayout = () => {
 
   const { isLoggedIn } = useSelector((state) => state.auth);
 
-  const { conversations, currentConversation } = useSelector(
-    (state) => state.chat.singleChat
-  );
+  const { conversations } = useSelector((state) => state.chat.singleChat);
 
   const { voiceCall, videoCall, incomingVoiceCall, incomingVideoCall } =
     useSelector((state) => state.call);
@@ -109,22 +107,20 @@ const DashboardLayout = () => {
 
     socket?.on("new_message", (data) => {
       const message = data.message;
-      console.log(currentConversation, data);
 
       // check if msg we got is from currently selected conversation
-
-      if (currentConversation?.id === data.conversationId) {
-        dispatch(
-          addSingleChatMessage({
-            id: message._id,
-            type: "msg",
-            subtype: message.type,
-            message: message.text,
-            incoming: message.to === userId,
-            outgoing: message.from === userId,
-          })
-        );
-      }
+      // if (currentConversation?.id === data.conversationId) {
+      dispatch(
+        addSingleChatMessage({
+          id: message._id,
+          type: "msg",
+          subtype: message.type,
+          message: message.text,
+          incoming: message.to === userId,
+          outgoing: message.from === userId,
+        })
+      );
+      // }
     });
 
     // Call
