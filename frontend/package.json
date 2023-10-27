@@ -7,6 +7,7 @@
     "@emoji-mart/react": "^1.1.1",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
+    "@faker-js/faker": "^8.2.0",
     "@hookform/resolvers": "^3.1.1",
     "@iconify/react": "^4.0.0",
     "@mui/material": "^5.10.8",
@@ -62,8 +63,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@faker-js/faker": "^7.5.0"
   }
 }
