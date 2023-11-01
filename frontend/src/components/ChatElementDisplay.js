@@ -14,7 +14,7 @@ import { socket } from "../socket";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSingleChatConversations } from "../store";
 
-const userId = window.localStorage.getItem("userId");
+// const userId = window.localStorage.getItem("userId");
 
 const ChatElementDisplay = ({ type }) => {
   // React-Redux
@@ -22,12 +22,14 @@ const ChatElementDisplay = ({ type }) => {
   const { conversations, currentMessages } = useSelector(
     (state) => state.chat.singleChat
   );
+  const { _id: userId } = useSelector((state) => state.user.user);
 
   useEffect(() => {
     socket.emit("get_single_chat_conversations", { userId }, (data) => {
-      dispatch(fetchSingleChatConversations({ conversations: data }));
+      console.log("chatelement", userId);
+      dispatch(fetchSingleChatConversations({ userId, conversations: data }));
     });
-  }, [dispatch,currentMessages]);
+  }, [userId, dispatch, currentMessages]); //dispatch
 
   return (
     <>

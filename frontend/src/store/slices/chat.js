@@ -1,7 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const userId = window.localStorage.getItem("userId");
-
 const initialState = {
   singleChat: {
     conversations: [],
@@ -20,7 +18,7 @@ const chatSlice = createSlice({
     fetchSingleChatConversations(state, action) {
       const list = action.payload.conversations.map((element) => {
         const thisUser = element.participants.find(
-          (element) => element._id.toString() !== userId
+          (element) => element._id.toString() !== action.payload.userId
         );
 
         let lastMessage = "No Messages Yet";
@@ -60,7 +58,7 @@ const chatSlice = createSlice({
             return element;
           } else {
             const thisUser = thisConversations.participants.find(
-              (element) => element?._id.toString() !== userId
+              (element) => element?._id.toString() !== action.payload.userId
             );
 
             return {
@@ -83,7 +81,7 @@ const chatSlice = createSlice({
       const thisConversations = action.payload.conversations;
 
       const thisUser = thisConversations.participants.find(
-        (element) => element._id.toString() !== userId
+        (element) => element._id.toString() !== action.payload.userId
       );
 
       // to prevent adding same conversation 2 times
@@ -115,8 +113,8 @@ const chatSlice = createSlice({
         type: "msg",
         subtype: element.type,
         message: element.text,
-        incoming: element.to === userId,
-        outgoing: element.from === userId,
+        incoming: element.to === action.payload.userId,
+        outgoing: element.from === action.payload.userId,
       }));
 
       state.singleChat.currentMessages = formattedMessages;

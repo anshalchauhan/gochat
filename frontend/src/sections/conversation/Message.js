@@ -24,13 +24,14 @@ const Message = ({ menu }) => {
   );
 
   const { roomId } = useSelector((state) => state.user);
+  const userId = window.localStorage.getItem("userId");
 
   useEffect(() => {
     const current = conversations.find((element) => element?.id === roomId);
 
     socket.emit("get_messages", { conversationId: current?.id }, (data) => {
       // console.log(data, "List of messages");
-      dispatch(fetchSingleChatCurrentMessages({ messages: data }));
+      dispatch(fetchSingleChatCurrentMessages({ userId, messages: data }));
     });
 
     dispatch(setSingleChatCurrentConversations(current));

@@ -36,7 +36,9 @@ const DashboardLayout = () => {
 
   const { isLoggedIn } = useSelector((state) => state.auth);
 
-  const { conversations } = useSelector((state) => state.chat.singleChat);
+  const { conversations, currentMessages } = useSelector(
+    (state) => state.chat.singleChat
+  );
 
   const { voiceCall, videoCall, incomingVoiceCall, incomingVideoCall } =
     useSelector((state) => state.call);
@@ -92,10 +94,12 @@ const DashboardLayout = () => {
 
       if (exisitingConversations) {
         // update single chat conversation
-        dispatch(updateSingleChatConversations({ conversations: data }));
+        dispatch(
+          updateSingleChatConversations({ userId, conversations: data })
+        );
       } else {
         // add new singlechat conversation
-        dispatch(addSingleChatConversations({ conversations: data }));
+        dispatch(addSingleChatConversations({ userId, conversations: data }));
       }
       dispatch(selectConversation({ roomId: data._id }));
       dispatch(
@@ -173,6 +177,13 @@ const DashboardLayout = () => {
       socket?.off("video-call-rejected");
     };
   }, [isLoggedIn, socket]);
+
+  // useEffect(() => {
+  //   socket.emit("get_single_chat_conversations", { userId }, (data) => {
+  //     console.log(userId);
+  //     dispatch(fetchSingleChatConversations({ conversations: data }));
+  //   });
+  // }, [currentMessages]); //dispatch
 
   if (!isLoggedIn) {
     return <Navigate to="/auth/login" />;

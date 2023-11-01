@@ -51,8 +51,6 @@ const userSlice = createSlice({
       state.isLoading = false;
       state.isLoggedIn = true;
       state.users = action.payload.data;
-
-      console.log("fetch USers done");
     });
     builder.addCase(fetchUsers.rejected, (state, action) => {
       state.isLoading = false;

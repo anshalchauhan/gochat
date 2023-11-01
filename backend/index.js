@@ -219,7 +219,6 @@ io.on("connection", async (socket) => {
 
   // Handle text and link message
   socket.on("text_message", async (data) => {
-    console.log("Received Message", data);
     // data: {to, from ,message, conversationId, type}
     const { to, from, message, conversationId, type } = data;
 

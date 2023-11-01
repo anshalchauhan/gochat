@@ -15,7 +15,7 @@ const ElementWrapper = ({ onClick, children, isSelected }) => {
           : theme.palette.primary.main
         : theme.palette.mode === "light"
         ? "#fff"
-        : theme.palette.background.paper,
+        : alpha(theme.palette.background.default, 1),
   };
 
   return (

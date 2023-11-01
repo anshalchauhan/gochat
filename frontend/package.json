@@ -21,6 +21,7 @@
     "dotenv": "^16.3.1",
     "emoji-mart": "^5.5.2",
     "framer-motion": "^7.5.3",
+    "gochat-server": "file:..",
     "phosphor-react": "^1.4.1",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
