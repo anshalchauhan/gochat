@@ -114,7 +114,7 @@ const SharedMessages = () => {
                           <Grid key={el} item xs={4}>
                             <img
                               src={faker.image.avatar()}
-                              alt={faker.name.fullName()}
+                              alt={faker.person.fullName()}
                             />
                           </Grid>
                         );

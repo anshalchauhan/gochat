@@ -26,7 +26,6 @@ const ChatElementDisplay = ({ type }) => {
 
   useEffect(() => {
     socket.emit("get_single_chat_conversations", { userId }, (data) => {
-      console.log("chatelement", userId);
       dispatch(fetchSingleChatConversations({ userId, conversations: data }));
     });
   }, [userId, dispatch, currentMessages]); //dispatch

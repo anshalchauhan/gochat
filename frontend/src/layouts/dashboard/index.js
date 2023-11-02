@@ -178,13 +178,6 @@ const DashboardLayout = () => {
     };
   }, [isLoggedIn, socket]);
 
-  // useEffect(() => {
-  //   socket.emit("get_single_chat_conversations", { userId }, (data) => {
-  //     console.log(userId);
-  //     dispatch(fetchSingleChatConversations({ conversations: data }));
-  //   });
-  // }, [currentMessages]); //dispatch
-
   if (!isLoggedIn) {
     return <Navigate to="/auth/login" />;
   }

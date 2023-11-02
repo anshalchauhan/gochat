@@ -27,11 +27,13 @@ const CallLogElement = ({ online, incoming, missed }) => {
               <Avatar src={faker.image.avatar()} />
             </StyledBadge>
           ) : (
-            <Avatar alt={faker.name.fullName()} src={faker.image.avatar()} />
+            <Avatar alt={faker.person.fullName()} src={faker.image.avatar()} />
           )}
           {/* Name and Call History */}
           <Stack spacing={0.3}>
-            <Typography variant="subtitle2">{faker.name.fullName()}</Typography>
+            <Typography variant="subtitle2">
+              {faker.person.fullName()}
+            </Typography>
             <Stack direction="row" alignItems="center" spacing={1}>
               {incoming ? (
                 <ArrowDownLeft color={missed ? "red" : "green"} />

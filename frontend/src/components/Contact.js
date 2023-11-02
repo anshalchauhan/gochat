@@ -199,8 +199,8 @@ const Contact = () => {
                   return (
                     <Box key={index}>
                       <img
-                        src={faker.image.food()}
-                        alt={faker.name.fullName()}
+                        src={faker.image.urlLoremFlickr({ category: "food" })}
+                        alt={faker.person.fullName()}
                       />
                     </Box>
                   );
@@ -243,7 +243,7 @@ const Contact = () => {
               <Stack direction="row" spacing={2} alignItems="center">
                 <Avatar
                   src={faker.image.avatar()}
-                  alt={faker.name.fullName()}
+                  alt={faker.person.fullName()}
                 />
                 <Stack spacing={0.5}>
                   <Typography variant="subtitle2">Pet Lovers</Typography>

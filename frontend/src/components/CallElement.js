@@ -27,9 +27,9 @@ const CallElement = ({ online }) => {
               <Avatar src={faker.image.avatar()} />
             </StyledBadge>
           ) : (
-            <Avatar alt={faker.name.fullName()} src={faker.image.avatar()} />
+            <Avatar alt={faker.person.fullName()} src={faker.image.avatar()} />
           )}
-          <Typography variant="subtitle2">{faker.name.fullName()}</Typography>
+          <Typography variant="subtitle2">{faker.person.fullName()}</Typography>
         </Stack>
         <Stack direction="row" alignItems="center" spacing={2}>
           <IconButton>
