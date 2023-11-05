@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import {
   Box,
   Stack,
@@ -86,6 +86,7 @@ const ChatInput = ({
   setValue,
   value,
   inputRef,
+  sendMessage,
 }) => {
   const [openActions, setOpenActions] = useState(false);
 
@@ -95,6 +96,11 @@ const ChatInput = ({
       value={value}
       onChange={(event) => {
         setValue(event.target.value);
+      }}
+      onKeyDown={(e) => {
+        if (e.key === "Enter") {
+          sendMessage();
+        }
       }}
       fullWidth
       placeholder="Write a message..."
@@ -228,6 +234,17 @@ const Footer = () => {
     justifyContent: "center",
   };
 
+  const sendMessage = () => {
+    socket.emit("text_message", {
+      message: linkify(value),
+      conversationId: roomId,
+      from: userId,
+      to: currentConversation.userId,
+      type: containsUrl(value) ? "Link" : "Text",
+    });
+    setValue("");
+  };
+
   return (
     <Box p={2} sx={footerStyle}>
       <Stack direction="row" alignItems="center" spacing={3}>
@@ -250,22 +267,12 @@ const Footer = () => {
             setValue={setValue}
             openEmojiPicker={openEmojiPicker}
             setOpenEmojiPicker={setOpenEmojiPicker}
+            sendMessage={sendMessage}
           />
         </Stack>
         <Box sx={footerEndAdornment}>
           <Stack sx={footerEndAdornmentIcon}>
-            <IconButton
-              onClick={() => {
-                socket.emit("text_message", {
-                  message: linkify(value),
-                  conversationId: roomId,
-                  from: userId,
-                  to: currentConversation.userId,
-                  type: containsUrl(value) ? "Link" : "Text",
-                });
-                setValue("");
-              }}
-            >
+            <IconButton onClick={sendMessage}>
               <PaperPlaneTilt color="#fff" />
             </IconButton>
           </Stack>

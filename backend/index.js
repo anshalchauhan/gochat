@@ -158,8 +158,6 @@ io.on("connection", async (socket) => {
         "participants",
         "firstName lastName _id email status avatar about"
       );
-
-      console.log(existingConversations);
       callback(existingConversations);
     }
   );

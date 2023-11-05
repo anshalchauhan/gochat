@@ -62,7 +62,7 @@ app.use(
       defaultSrc: ["'self'"],
       connectSrc: [
         "'self'",
-        "http://127.0.0.1:3000 ws: https://gochat-application.s3.ap-south-1.amazonaws.com",
+        "http://127.0.0.1:3000 http://localhost:5000 ws: https://gochat-application.s3.ap-south-1.amazonaws.com",
       ],
     },
   })
