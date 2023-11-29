@@ -298,17 +298,6 @@ io.on("connection", async (socket) => {
     });
   });
 
-  // reject-voice-call
-  socket.on("reject-voice-call", async (data) => {
-    // Destructuring Data
-    const { from } = data;
-
-    // To get the socketId of from, we will fetch the user
-    const fromUser = await User.findById(from);
-
-    io.to(fromUser?.socketId).emit("voice-call-rejected");
-  });
-
   // out-going-video-call
   socket.on("outgoing-video-call", async (data) => {
     // Destructuring Data
@@ -325,21 +314,27 @@ io.on("connection", async (socket) => {
     });
   });
 
-  // reject-video-call
-  socket.on("reject-video-call", async (data) => {
+  // accept-incoming-call (for both voice and video call)
+  socket.on("accept-incoming-call", async ({ id }) => {
+    const user = await User.findById(id);
+    io.to(user?.socketId).emit("accept-call");
+  });
+
+  // reject-call (for both voice and video call)
+  socket.on("reject-call", async (data) => {
     // Destructuring Data
     const { from } = data;
 
     // To get the socketId of from, we will fetch the user
     const fromUser = await User.findById(from);
 
-    io.to(fromUser?.socketId).emit("video-call-rejected");
+    io.to(fromUser?.socketId).emit("close-call");
   });
 
-  // accept-incoming-call (for both voice and video call)
-  socket.on("accept-incoming-call", async ({ id }) => {
+  // close-ongoing-call (for both voice and video call)
+  socket.on("close-ongoing-call", async ({ id }) => {
     const user = await User.findById(id);
-    io.to(user?.socketId).emit("accept-call");
+    io.to(user?.socketId).emit("close-call");
   });
 
   // HANDLE SOCKET DICONNECTION

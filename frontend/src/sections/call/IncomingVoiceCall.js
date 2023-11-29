@@ -34,7 +34,7 @@ const IncomingVoiceCall = () => {
   };
 
   const rejectCall = () => {
-    socket?.emit("reject-voice-call", { from: incomingVoiceCall.id });
+    socket?.emit("reject-call", { from: incomingVoiceCall.id });
     dispatch(endCall());
   };
 

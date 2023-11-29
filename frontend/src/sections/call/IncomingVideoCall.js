@@ -34,7 +34,7 @@ const IncomingVideoCall = () => {
   };
 
   const rejectCall = () => {
-    socket?.emit("reject-video-call", { from: incomingVideoCall.id });
+    socket?.emit("reject-call", { from: incomingVideoCall.id });
     dispatch(endCall());
   };
 

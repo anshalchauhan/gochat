@@ -154,14 +154,6 @@ const DashboardLayout = () => {
       );
     });
 
-    socket.on("voice-call-rejected", () => {
-      dispatch(endCall());
-    });
-
-    socket.on("video-call-rejected", () => {
-      dispatch(endCall());
-    });
-
     // Cleanup function
     // calling off sockets
     return () => {
@@ -173,8 +165,6 @@ const DashboardLayout = () => {
       socket?.off("new_message");
       socket?.off("incoming-voice-call");
       socket?.off("incoming-video-call");
-      socket?.off("voice-call-rejected");
-      socket?.off("video-call-rejected");
     };
   }, [isLoggedIn, socket]);
 
